@@ -8,7 +8,7 @@
 //
 
 
-import Foundation
+import UIKit
 
 final class NetworkManager {
     
@@ -22,6 +22,7 @@ final class NetworkManager {
     
     static let baseURLString = "https://seanallen-course-backend.herokuapp.com/swiftui-fundamentals/"
     private let appetizerURL = baseURLString + "appetizers"
+    private let cache = NSCache<NSString, UIImage>()  // create image cache
     
     // MARK: - Get Appetizers Function
     
@@ -61,6 +62,32 @@ final class NetworkManager {
             } catch {
                 completion(.failure(.invalidData))
             }
+        }.resume()
+    }
+    
+    // MARK: - Download Image Function
+    
+    func downloadImage(fromURLString urlString: String, completion: @escaping (UIImage?) -> Void) {
+        // check if image is in cache
+        let cacheKey = NSString(string: urlString)
+        if let image = cache.object(forKey: cacheKey) {
+            completion(image)
+            return
+        }
+       
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+            
+            self.cache.setObject(image, forKey: cacheKey)
+            completion(image)
         }.resume()
     }
 }
