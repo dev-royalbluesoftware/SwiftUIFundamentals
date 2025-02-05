@@ -34,7 +34,7 @@ final class NetworkManager {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             // error case
-            guard let _ = error else {
+            if let _ = error {
                 completion(.failure(.unableToComplete))
                 return
             }
