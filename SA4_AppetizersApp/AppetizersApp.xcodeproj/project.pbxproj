@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C2044F42D553D5000E3678C /* AppetizerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2044F32D553D5000E3678C /* AppetizerDetailView.swift */; };
+		2C2044F72D55549600E3678C /* APButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2044F62D55549600E3678C /* APButton.swift */; };
+		2C2044F92D5555E600E3678C /* APXDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2044F82D5555E600E3678C /* APXDismissButton.swift */; };
 		2CC21C812D52BC2E005D918B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC21C782D52BC2E005D918B /* Preview Assets.xcassets */; };
 		2CC21C822D52BC2E005D918B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC21C7E2D52BC2E005D918B /* Assets.xcassets */; };
 		2CC21C832D52BC2E005D918B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC21C7A2D52BC2E005D918B /* AccountView.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C2044F32D553D5000E3678C /* AppetizerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppetizerDetailView.swift; sourceTree = "<group>"; };
+		2C2044F62D55549600E3678C /* APButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APButton.swift; sourceTree = "<group>"; };
+		2C2044F82D5555E600E3678C /* APXDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APXDismissButton.swift; sourceTree = "<group>"; };
 		2C8DBC752D3F5D9F004A211E /* AppetizersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppetizersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC21C782D52BC2E005D918B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2CC21C7A2D52BC2E005D918B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -54,6 +60,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C2044F52D55548400E3678C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2C2044F62D55549600E3678C /* APButton.swift */,
+				2C2044F82D5555E600E3678C /* APXDismissButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		2C8DBC6C2D3F5D9F004A211E = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +110,7 @@
 		2CC21C8F2D52C23E005D918B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2C2044F52D55548400E3678C /* Buttons */,
 				2CD987332D53F17E00DA92F4 /* Image */,
 				2CD987322D53F11A00DA92F4 /* Cells */,
 				2CD987312D53F0FF00DA92F4 /* UIKitComponents */,
@@ -107,6 +123,7 @@
 			children = (
 				2CC21C9C2D531B58005D918B /* AppetizerListViewModel.swift */,
 				2CC21C7B2D52BC2E005D918B /* AppetizerListView.swift */,
+				2C2044F32D553D5000E3678C /* AppetizerDetailView.swift */,
 			);
 			path = AppetizerListView;
 			sourceTree = "<group>";
@@ -271,12 +288,15 @@
 			files = (
 				2CC21C832D52BC2E005D918B /* AccountView.swift in Sources */,
 				2CC21C9B2D52C4D9005D918B /* APError.swift in Sources */,
+				2C2044F92D5555E600E3678C /* APXDismissButton.swift in Sources */,
 				2CC21C8E2D52C1BF005D918B /* AppetizerListCell.swift in Sources */,
+				2C2044F72D55549600E3678C /* APButton.swift in Sources */,
 				2CC21C9D2D531B58005D918B /* AppetizerListViewModel.swift in Sources */,
 				2CC21C842D52BC2E005D918B /* AppetizerListView.swift in Sources */,
 				2CD9872B2D53E2E100DA92F4 /* LoadingView.swift in Sources */,
 				2CD9872E2D53ED6B00DA92F4 /* RemoteImage.swift in Sources */,
 				2CC21C852D52BC2E005D918B /* AppetizersAppApp.swift in Sources */,
+				2C2044F42D553D5000E3678C /* AppetizerDetailView.swift in Sources */,
 				2CC21C992D52C3F0005D918B /* NetworkManager.swift in Sources */,
 				2CC21C932D52C367005D918B /* Appetizer.swift in Sources */,
 				2CD987292D53DE6B00DA92F4 /* Alert.swift in Sources */,
