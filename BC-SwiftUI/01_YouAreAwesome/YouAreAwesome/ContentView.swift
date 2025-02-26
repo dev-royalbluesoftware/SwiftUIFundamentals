@@ -16,8 +16,6 @@ struct ContentView: View {
     
     @State private var messageString = ""
     @State private var imageName = ""
-    @State private var lastMessageString = ""
-    @State private var lastImageName = ""
     
     // MARK: - Properties
     
@@ -50,12 +48,13 @@ struct ContentView: View {
                                 "You Are Mind Blowing!",
                                 "You Are Radiant!"]
                 
+                var lastMessageString: String
+                var lastImageName: String
+                
                 repeat {
                     lastMessageString = messages.randomElement() ?? "You Are Awesome!"
                     lastImageName = "image\(Int.random(in: 0...9))"
-                    messageString = messages.randomElement() ?? "You Are Awesome!"
-                    imageName = "image\(Int.random(in: 0...9))"
-                } while messageString == lastMessageString || imageName == lastImageName
+                } while lastMessageString == messageString || lastImageName == imageName
                 
                 messageString = lastMessageString
                 imageName = lastImageName
