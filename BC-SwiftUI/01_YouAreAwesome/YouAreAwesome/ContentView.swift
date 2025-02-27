@@ -9,6 +9,7 @@
 
 
 import SwiftUI
+import AVFAudio
 
 struct ContentView: View {
     
@@ -16,8 +17,13 @@ struct ContentView: View {
     
     @State private var messageString = ""
     @State private var imageName = ""
+    @State private var audioPlayer: AVAudioPlayer!
+    @State private var soundName = ""
     
     // MARK: - Properties
+    
+    let numberOfImages = 10
+    let numberOfSounds = 6
     
     var body: some View {
         VStack {
@@ -27,6 +33,8 @@ struct ContentView: View {
                 .minimumScaleFactor(0.4)
                 .frame(height: 130)
                 .animation(.easeInOut(duration: 0.15), value: messageString)
+            
+            Spacer()
             
             Image(imageName)
                 .resizable()
@@ -50,15 +58,31 @@ struct ContentView: View {
                 
                 var lastMessageString: String
                 var lastImageName: String
-                
+                var lastSoundName: String
+
                 repeat {
                     lastMessageString = messages.randomElement() ?? "You Are Awesome!"
-                    lastImageName = "image\(Int.random(in: 0...9))"
-                } while lastMessageString == messageString || lastImageName == imageName
+                    lastImageName = "image\(Int.random(in: 0...numberOfImages - 1))"
+                    lastSoundName = "sound\(Int.random(in: 0...numberOfSounds - 1))"
+                } while lastMessageString == messageString || lastImageName == imageName || lastSoundName == soundName
                 
                 messageString = lastMessageString
                 imageName = lastImageName
+                soundName = lastSoundName
                 
+                // Audio Player
+                guard let soundFile = NSDataAsset(name: soundName) else {
+                    print("😡 Could not read file named \(soundName)")
+                    return
+                }
+                
+                do {
+                    audioPlayer = try AVAudioPlayer(data: soundFile.data)
+                    audioPlayer.play()
+                    
+                } catch {
+                    print("😡 ERROR: \(error.localizedDescription) creating audio player")
+                }
             } label: {
                 Text("Show Message")
             }
