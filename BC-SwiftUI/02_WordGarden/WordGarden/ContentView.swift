@@ -23,7 +23,7 @@ struct ContentView: View {
     @State private var imageName = "flower8"
     @State private var playAgainHidden = true
     
-    // MARK: -
+    @FocusState private var textFieldisFocused: Bool
     
     var body: some View {
         VStack {
@@ -63,12 +63,25 @@ struct ContentView: View {
                             RoundedRectangle(cornerRadius: 5)
                                 .stroke(Color.gray, lineWidth: 1)
                         }
+                        .keyboardType(.asciiCapable)
+                        .submitLabel(.done)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.characters)
+                        .onChange(of: guessedLetter) {
+                            guessedLetter = guessedLetter.trimmingCharacters(in: .letters.inverted)
+                            
+                            guard let lastCharacter = guessedLetter.last else { return }
+                            guessedLetter = String(lastCharacter).uppercased()
+                        }
+                        .focused($textFieldisFocused)
                     
                     Button("Guess a Letter") {
                         // TODO: Guess a Letter Button action here...
+                        textFieldisFocused = false
                     }
                     .buttonStyle(.bordered)
                     .tint(.mint)
+                    .disabled(guessedLetter.isEmpty)
                 }
                 
             } else {
